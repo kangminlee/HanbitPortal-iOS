@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4TJ-tR-kHq">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--Reveal View Controller-->
+        <scene sceneID="1mB-c0-vto">
+            <objects>
+                <viewController id="4TJ-tR-kHq" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OFA-h4-IEW"/>
+                        <viewControllerLayoutGuide type="bottom" id="pQU-ox-wdH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c1G-uv-o06">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="dPu-mf-i7B" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegue" id="AOm-Us-A6y"/>
+                        <segue destination="oO9-Ad-M2B" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegue" id="TqN-Tm-anr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="heK-es-si6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="147" y="88"/>
+        </scene>
+        <!--Slide Menu View Controller - SlideMenu-->
+        <scene sceneID="HQw-Cx-p8C">
+            <objects>
+                <tableViewController title="SlideMenu" id="dPu-mf-i7B" customClass="SlideMenuViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jQj-GG-nUx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="title" id="Fpi-w1-JUR">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fpi-w1-JUR" id="WN4-Ji-Bdv">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hanbit_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="r8m-KS-6ui">
+                                            <rect key="frame" x="13" y="2" width="102" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="wor-jx-3tY" kind="custom" identifier="showHome" customClass="SWRevealViewControllerSegue" id="KXJ-sM-Ukt"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bibleList" id="TtU-Oa-OSM">
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TtU-Oa-OSM" id="zz3-IT-8Wh">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BibleList" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1L-sQ-YBd">
+                                            <rect key="frame" x="20" y="11" width="67" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="jjf-2J-z0F" kind="custom" identifier="showBible" customClass="SWRevealViewControllerSegue" id="WQg-oe-cJM"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bibleTest" id="lDk-Y9-zT8">
+                                <rect key="frame" x="0.0" y="110" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lDk-Y9-zT8" id="tXi-x3-Gn5">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BibleTest" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThY-th-Aof">
+                                            <rect key="frame" x="20" y="11" width="70" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Yjv-p1-HXL" kind="custom" identifier="bibleTest" customClass="SWRevealViewControllerSegue" id="vBz-hV-5Xr"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bibleTable" id="L21-J0-XLG">
+                                <rect key="frame" x="0.0" y="154" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L21-J0-XLG" id="UOX-m0-1gf">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BibleTable" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dd9-8I-KTS">
+                                            <rect key="frame" x="20" y="11" width="80" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dPu-mf-i7B" id="6cs-Ki-dp4"/>
+                            <outlet property="delegate" destination="dPu-mf-i7B" id="OJH-Wm-RGE"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="dQa-Nm-Ugj"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rmL-gZ-Uhq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="660" y="-364"/>
+        </scene>
+        <!--Bible Test View Controller-->
+        <scene sceneID="7Yh-F3-SeF">
+            <objects>
+                <viewController id="Yjv-p1-HXL" customClass="BibleTestViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zRF-MS-ZqP"/>
+                        <viewControllerLayoutGuide type="bottom" id="E8c-xN-KA0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hWN-NA-YmQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TFj-ht-rRj">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="arn-mO-AM2"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sidebarButton" destination="arn-mO-AM2" id="o1l-wt-FoP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hDx-2u-ueE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1687" y="-1117"/>
+        </scene>
+        <!--Bible List View Controller-->
+        <scene sceneID="nO7-6z-mks">
+            <objects>
+                <tableViewController id="jjf-2J-z0F" customClass="BibleListViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RuQ-Hy-F6M">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bibleListTable" id="kg9-Id-NPi">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kg9-Id-NPi" id="vg3-4Z-Ez6">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Ghs-YH-20h" kind="push" id="THc-Ch-t2R"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="jjf-2J-z0F" id="a2b-Az-7df"/>
+                            <outlet property="delegate" destination="jjf-2J-z0F" id="ojU-AE-GY5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ldT-qN-kYk">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="bQR-fW-FWC"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sidebarButton" destination="bQR-fW-FWC" id="JDu-N4-hjr"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yUJ-f7-NGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1161" y="-364"/>
+        </scene>
+        <!--Bible View Controller - BibleView-->
+        <scene sceneID="zY8-kE-gIB">
+            <objects>
+                <viewController title="BibleView" id="Ghs-YH-20h" customClass="BibleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hph-nD-c6b"/>
+                        <viewControllerLayoutGuide type="bottom" id="JoV-02-A2q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1wK-Fw-3LL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="bezel" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="XIV-Ii-7c4">
+                                <rect key="frame" x="20" y="77" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="bezel" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="vA3-Jy-WSC">
+                                <rect key="frame" x="20" y="279" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="smc-bW-qBl">
+                                <rect key="frame" x="20" y="115" width="280" height="140"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="test bible verse">
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbN-3N-L10">
+                                <rect key="frame" x="20" y="317" width="280" height="140"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="test bible verse">
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jfr-Gm-Ftx">
+                                <rect key="frame" x="20" y="500" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="button_previous.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pp7-d9-mkk">
+                                <rect key="frame" x="252" y="500" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="button_next.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBq-Xf-6QO">
+                                <rect key="frame" x="136" y="500" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" image="button_refresh.png">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="FGY-Uu-5q8"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="bibleEnglish" destination="bbN-3N-L10" id="XVl-ZW-fk8"/>
+                        <outlet property="bibleEnglishTitle" destination="vA3-Jy-WSC" id="GAM-p5-wwP"/>
+                        <outlet property="bibleKorean" destination="smc-bW-qBl" id="bxQ-To-G9X"/>
+                        <outlet property="bibleKoreanTitle" destination="XIV-Ii-7c4" id="pMQ-r5-hTv"/>
+                        <outlet property="bibleLeft" destination="Jfr-Gm-Ftx" id="k0M-13-9cj"/>
+                        <outlet property="bibleRecitation" destination="BBq-Xf-6QO" id="vpI-zK-yTd"/>
+                        <outlet property="bibleRight" destination="Pp7-d9-mkk" id="VGF-TI-qLG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6T8-A5-AYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1669" y="-364"/>
+        </scene>
+        <!--Main View Controller - MainView-->
+        <scene sceneID="RCR-qy-yVQ">
+            <objects>
+                <viewController title="MainView" id="wor-jx-3tY" customClass="MainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J6q-xz-P8w"/>
+                        <viewControllerLayoutGuide type="bottom" id="uMW-Xh-jOP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EPp-19-Ceb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hanbit_bible.png" translatesAutoresizingMaskIntoConstraints="NO" id="xya-zE-2oy">
+                                <rect key="frame" x="63" y="105" width="194" height="136"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tlZ-Vb-RSC">
+                                <rect key="frame" x="74" y="249" width="183" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.83638344482879579" green="1" blue="0.24483403168607376" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QLI-TI-HzS">
+                                <rect key="frame" x="25" y="287" width="280" height="131"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="test bible verse">
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wut-BH-EqE">
+                                <rect key="frame" x="20" y="486" width="280" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <string key="text">San Diego Hanbit Church
+4717 Cardin St. San Diego, CA 92111
+(858) 874-2412, info@sdhanbit.org</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="du2-g4-4tu">
+                                <rect key="frame" x="180" y="426" width="100" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Today" backgroundImage="rectangle_icon.png">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hln-xd-E1L">
+                                <rect key="frame" x="39" y="426" width="100" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="This Week" backgroundImage="rectangle_icon.png">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YvU-5A-ejd">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="4as-wb-8xn"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mainBible" destination="QLI-TI-HzS" id="AH8-ay-cw1"/>
+                        <outlet property="mainDaily" destination="du2-g4-4tu" id="WPE-UJ-clU"/>
+                        <outlet property="mainThisWeek" destination="hln-xd-E1L" id="cYJ-wo-8pu"/>
+                        <outlet property="mainTitle" destination="tlZ-Vb-RSC" id="3vj-0W-UDg"/>
+                        <outlet property="sidebarButton" destination="4as-wb-8xn" id="hH6-dF-MaR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bK0-zu-7nB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1161" y="489"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qYq-sh-m8v">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oO9-Ad-M2B" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="A8Y-e4-nuL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wor-jx-3tY" kind="relationship" relationship="rootViewController" id="xkC-Hj-xAZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5or-aZ-Vb6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="660" y="489"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="button_next.png" width="128" height="128"/>
+        <image name="button_previous.png" width="128" height="128"/>
+        <image name="button_refresh.png" width="128" height="128"/>
+        <image name="hanbit_bible.png" width="670" height="374"/>
+        <image name="hanbit_logo.png" width="306" height="124"/>
+        <image name="menu.png" width="28" height="20"/>
+        <image name="rectangle_icon.png" width="128" height="128"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="KXJ-sM-Ukt"/>
+    </inferredMetricsTieBreakers>
+</document>
