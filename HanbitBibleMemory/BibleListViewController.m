@@ -14,28 +14,36 @@
 @interface BibleListViewController ()
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
-@property (strong, nonatomic) NSArray *bibleList;
 
 @end
 
 @implementation BibleListViewController
 
+NSArray *bibleList[5];
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     BibleViewController *bibleController = (BibleViewController *)segue.destinationViewController;
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    bibleController.bibleIndex = indexPath.row;
-    bibleController.bibleChapter = self.bibleChapter;
+    bibleController.bibleIndex = (indexPath.row % 13) - 1;
+    bibleController.bibleChapter = indexPath.row / 13; // self.bibleChapter;
 }
 
 - (void) loadBibleListData:(NSInteger)index
 {
-    self.bibleList = @[korTitleString[index][0],  korTitleString[index][1],
-                       korTitleString[index][2],  korTitleString[index][3],
-                       korTitleString[index][4],  korTitleString[index][5],
-                       korTitleString[index][6],  korTitleString[index][7],
-                       korTitleString[index][8],  korTitleString[index][9],
-                       korTitleString[index][10], korTitleString[index][11]];
+    bibleList[index] = @[korCategoryString[index],
+                        [NSString stringWithFormat:@"%@ - %@", korMidTitleString[index][0], korTitleString[index][0]],
+                        [NSString stringWithFormat:@"%@ - %@", korMidTitleString[index][0], korTitleString[index][1]],
+                        [NSString stringWithFormat:@"%@ - %@", korMidTitleString[index][1], korTitleString[index][2]],
+                        [NSString stringWithFormat:@"%@ - %@", korMidTitleString[index][1], korTitleString[index][3]],
+                        [NSString stringWithFormat:@"%@ - %@", korMidTitleString[index][2], korTitleString[index][4]],
+                        [NSString stringWithFormat:@"%@ - %@", korMidTitleString[index][2], korTitleString[index][5]],
+                        [NSString stringWithFormat:@"%@ - %@", korMidTitleString[index][3], korTitleString[index][6]],
+                        [NSString stringWithFormat:@"%@ - %@", korMidTitleString[index][3], korTitleString[index][7]],
+                        [NSString stringWithFormat:@"%@ - %@", korMidTitleString[index][4], korTitleString[index][8]],
+                        [NSString stringWithFormat:@"%@ - %@", korMidTitleString[index][4], korTitleString[index][9]],
+                        [NSString stringWithFormat:@"%@ - %@", korMidTitleString[index][5], korTitleString[index][10]],
+                        [NSString stringWithFormat:@"%@ - %@", korMidTitleString[index][5], korTitleString[index][11]]];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -61,7 +69,11 @@
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
-    [self loadBibleListData:self.bibleChapter];
+    [self loadBibleListData:0]; // self.bibleChapter
+    [self loadBibleListData:1];
+    [self loadBibleListData:2];
+    [self loadBibleListData:3];
+    [self loadBibleListData:4];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -86,20 +98,48 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSInteger i, totalRowCount = 0;
+    
+    for( i=0; i<5; i++ )
+        totalRowCount += [bibleList[i] count];
+    
     // Return the number of rows in the section.
-    return [self.bibleList count];
+    return totalRowCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"bibleListTable";
+    NSInteger index = indexPath.row / 13;
+    static NSString *CellIdentifier = nil;
+
+    if( indexPath.row % 13 == 0 )
+        CellIdentifier = @"bibleListChapter";
+    else
+        CellIdentifier = @"bibleListTable";
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
- 	NSString *bibleListChapter = [self.bibleList objectAtIndex:indexPath.row];
-	cell.textLabel.text = bibleListChapter;
+    NSString *bibleListChapter = [bibleList[index] objectAtIndex:indexPath.row % 13];
+    if( indexPath.row % 13 == 0 )
+    {
+        cell.textLabel.text = bibleListChapter;
+    }
+    else
+    {
+        UILabel *bibleListTableLabel = (UILabel *)[cell viewWithTag:100];
+        bibleListTableLabel.text = bibleListChapter;
+    }
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if( indexPath.row % 13 == 0 )
+        return 22;
+    else
+        return 40;
 }
 
 /*

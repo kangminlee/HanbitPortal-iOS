@@ -35,6 +35,9 @@
 		E18D2EE11896402D0035ED8E /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E18D2EDF1896402D0035ED8E /* menu@2x.png */; };
 		E191594E189D7E84001CEFF4 /* arrow-left.png in Resources */ = {isa = PBXBuildFile; fileRef = E191594C189D7E84001CEFF4 /* arrow-left.png */; };
 		E191594F189D7E84001CEFF4 /* arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = E191594D189D7E84001CEFF4 /* arrow-right.png */; };
+		E19BD68218AB7A3A00FCEDEE /* bible-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E19BD68118AB7A3A00FCEDEE /* bible-icon.png */; };
+		E19BD68418AB7A9400FCEDEE /* table-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E19BD68318AB7A9400FCEDEE /* table-icon.png */; };
+		E19BD68618AB7ACC00FCEDEE /* test-paper-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E19BD68518AB7ACC00FCEDEE /* test-paper-icon.png */; };
 		E1C32DD1189803CF0054A9AC /* BibleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C32DD0189803CF0054A9AC /* BibleListViewController.m */; };
 		E1DBCFD1189F5C5E006CEA0A /* BibleTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DBCFD0189F5C5E006CEA0A /* BibleTestViewController.m */; };
 		E1ECE429189D60E10002E620 /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E1ECE428189D60E10002E620 /* whiteButton.png */; };
@@ -93,6 +96,9 @@
 		E18D2EDF1896402D0035ED8E /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		E191594C189D7E84001CEFF4 /* arrow-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-left.png"; sourceTree = "<group>"; };
 		E191594D189D7E84001CEFF4 /* arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-right.png"; sourceTree = "<group>"; };
+		E19BD68118AB7A3A00FCEDEE /* bible-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bible-icon.png"; sourceTree = "<group>"; };
+		E19BD68318AB7A9400FCEDEE /* table-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "table-icon.png"; sourceTree = "<group>"; };
+		E19BD68518AB7ACC00FCEDEE /* test-paper-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test-paper-icon.png"; sourceTree = "<group>"; };
 		E1C32DCF189803CF0054A9AC /* BibleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleListViewController.h; sourceTree = "<group>"; };
 		E1C32DD0189803CF0054A9AC /* BibleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleListViewController.m; sourceTree = "<group>"; };
 		E1DBCFCF189F5C5E006CEA0A /* BibleTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleTestViewController.h; sourceTree = "<group>"; };
@@ -230,6 +236,7 @@
 				E16F808C189CB9C900F92E6F /* AppIcon@2x.png */,
 				E191594C189D7E84001CEFF4 /* arrow-left.png */,
 				E191594D189D7E84001CEFF4 /* arrow-right.png */,
+				E19BD68118AB7A3A00FCEDEE /* bible-icon.png */,
 				E1ED736C189E445A00012B00 /* button_next.png */,
 				E1ED736D189E445A00012B00 /* button_previous.png */,
 				E1ED736E189E445A00012B00 /* button_refresh.png */,
@@ -241,6 +248,8 @@
 				E18B2A70189A48A100072215 /* hanbit_logo.png */,
 				E18D2EDE1896402D0035ED8E /* menu.png */,
 				E18D2EDF1896402D0035ED8E /* menu@2x.png */,
+				E19BD68318AB7A9400FCEDEE /* table-icon.png */,
+				E19BD68518AB7ACC00FCEDEE /* test-paper-icon.png */,
 				E1ECE428189D60E10002E620 /* whiteButton.png */,
 			);
 			name = Images;
@@ -333,6 +342,9 @@
 				E191594F189D7E84001CEFF4 /* arrow-right.png in Resources */,
 				E18D2EE11896402D0035ED8E /* menu@2x.png in Resources */,
 				E18D2EAD18962F550035ED8E /* InfoPlist.strings in Resources */,
+				E19BD68618AB7ACC00FCEDEE /* test-paper-icon.png in Resources */,
+				E19BD68418AB7A9400FCEDEE /* table-icon.png in Resources */,
+				E19BD68218AB7A3A00FCEDEE /* bible-icon.png in Resources */,
 				E1ED7371189E445A00012B00 /* button_refresh.png in Resources */,
 				E18B2A77189A501500072215 /* main.jpg in Resources */,
 				E18B2A71189A48A100072215 /* hanbit_logo.png in Resources */,

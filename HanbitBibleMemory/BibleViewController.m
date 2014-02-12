@@ -56,6 +56,11 @@ NSInteger myBibleStatus = 0;
 {
     if( self.bibleIndex > 0 )
         self.bibleIndex = self.bibleIndex - 1;
+    else if( self.bibleChapter > 0 )
+    {
+        self.bibleChapter = self.bibleChapter - 1;
+        self.bibleIndex = 11;
+    }
     
     [self loadBibleVerse];
 }
@@ -64,6 +69,11 @@ NSInteger myBibleStatus = 0;
 {
     if( self.bibleIndex < 11 )
         self.bibleIndex = self.bibleIndex + 1;
+    else if( self.bibleChapter < 4 )
+    {
+        self.bibleChapter = self.bibleChapter + 1;
+        self.bibleIndex = 0;
+    }
     
     [self loadBibleVerse];
 }

@@ -38,11 +38,7 @@
     //self.tableView.separatorColor = [UIColor colorWithWhite:0.15f alpha:0.2f];
     
     self.menuItems = @[@"Hanbit Church",
-                       @"A. 새로운 삶",
-                       @"B. 그리스도를 전파함",
-                       @"C. 하나님을 의뢰함",
-                       @"D. 그리스도 제자의 자격",
-                       @"E. 그리스도를 닮아 감",
+                       @"성경 암송 60 구절",
                        @"성경 암송 모의 시험",
                        @"성경 읽기표"];
     
@@ -75,22 +71,29 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = nil;
+    NSString *imageName = nil;
     
     switch (indexPath.row) {
         case 0:
             CellIdentifier = @"title";
             break;
             
-        case 6:
-            CellIdentifier = @"bibleTest";
+        case 1:
+            CellIdentifier = @"bibleList";
+            imageName = @"bible-icon.png";
             break;
             
-        case 7:
+        case 2:
+            CellIdentifier = @"bibleTest";
+            imageName = @"test-paper-icon.png";
+            break;
+            
+        case 3:
             CellIdentifier = @"bibleTable";
+            imageName = @"table-icon.png";
             break;
             
         default:
-            CellIdentifier = @"bibleList";
             break;
     }
     
@@ -99,11 +102,20 @@
     // Configure the cell...
     if( indexPath.row > 0 )
     {
+        UIImageView *menuImageView = (UIImageView *)[cell viewWithTag:100];
+        menuImageView.image = [UIImage imageNamed:imageName];
+        
         NSString *menuName = [self.menuItems objectAtIndex:indexPath.row];
-        cell.textLabel.text = menuName;
+        UILabel *menuNameLabel = (UILabel *)[cell viewWithTag:101];
+        menuNameLabel.text = menuName; //cell.textLabel.text = menuName;
     }
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
 }
 
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
