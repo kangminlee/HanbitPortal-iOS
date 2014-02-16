@@ -9,6 +9,7 @@
 #import "BibleMainViewController.h"
 #import "BibleContextsTable.h"
 #import "BibleViewController.h"
+#import "SWRevealViewController.h"
 
 @interface BibleMainViewController ()
 
@@ -50,7 +51,8 @@ NSInteger nextPageIndex;
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"BiblePageViewController"];
     self.pageViewController.dataSource = self;
-
+    self.pageViewController.delegate = self;
+    
     BibleViewController *startingViewController = [self viewControllerAtIndex:self.initalIndex];
     NSArray *viewControllers = @[startingViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];

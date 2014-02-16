@@ -95,7 +95,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Yjv-p1-HXL" kind="custom" identifier="bibleTest" customClass="SWRevealViewControllerSegue" id="vBz-hV-5Xr"/>
+                                    <segue destination="Yjv-p1-HXL" kind="custom" identifier="bibleTest" customClass="SWRevealViewControllerSegue" id="xta-DG-wWv"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bibleTable" rowHeight="60" id="L21-J0-XLG">
@@ -141,18 +141,56 @@
                     <view key="view" contentMode="scaleToFill" id="hWN-NA-YmQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Korean Title" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qYy-wW-3JT">
+                                <rect key="frame" x="20" y="73" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Korean Text for Test" translatesAutoresizingMaskIntoConstraints="NO" id="8VY-D8-Nql">
+                                <rect key="frame" x="20" y="111" width="280" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="English Title" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bnl-dT-lny">
+                                <rect key="frame" x="20" y="279" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="English Text for Test" translatesAutoresizingMaskIntoConstraints="NO" id="0kp-jE-Ix0">
+                                <rect key="frame" x="20" y="317" width="280" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="TFj-ht-rRj">
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="arn-mO-AM2"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="4C2-TN-GyX">
+                            <connections>
+                                <action selector="bibleHintButton:" destination="Yjv-p1-HXL" id="8r0-U2-L4X"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="bibleEnglishTest" destination="0kp-jE-Ix0" id="g1Z-M2-9aB"/>
+                        <outlet property="bibleEnglishTitle" destination="bnl-dT-lny" id="X3a-5x-YXY"/>
+                        <outlet property="bibleKoreanTest" destination="8VY-D8-Nql" id="yPG-4C-LVo"/>
+                        <outlet property="bibleKoreanTitle" destination="qYy-wW-3JT" id="azT-Gy-oYV"/>
                         <outlet property="sidebarButton" destination="arn-mO-AM2" id="o1l-wt-FoP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDx-2u-ueE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1161" y="-1101"/>
+            <point key="canvasLocation" x="1161" y="-1088"/>
         </scene>
         <!--Bible List View Controller-->
         <scene sceneID="nO7-6z-mks">
@@ -242,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XwS-rP-Z0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1612" y="-364"/>
+            <point key="canvasLocation" x="1640" y="-364"/>
         </scene>
         <!--Bible View Controller-->
         <scene sceneID="tj9-mF-ZLS">
@@ -298,7 +336,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZKC-uF-GL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2061" y="4"/>
+            <point key="canvasLocation" x="2085" y="-13"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="rSw-8a-gBe">
@@ -306,7 +344,7 @@
                 <pageViewController storyboardIdentifier="BiblePageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="aRb-8X-Fo9" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcC-Pf-dKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2061" y="-704"/>
+            <point key="canvasLocation" x="2085" y="-746"/>
         </scene>
         <!--Main View Controller - MainView-->
         <scene sceneID="RCR-qy-yVQ">

@@ -10,7 +10,7 @@
 
 #define MAX_BIBLE_VERSE 60
 
-@interface BibleMainViewController : UIViewController <UIPageViewControllerDataSource>
+@interface BibleMainViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property NSInteger initalIndex;
