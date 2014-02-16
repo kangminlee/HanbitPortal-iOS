@@ -8,7 +8,7 @@
 
 #import "BibleListViewController.h"
 #import "SWRevealViewController.h"
-#import "BibleViewController.h"
+#import "BibleMainViewController.h"
 #import "BibleContextsTable.h"
 
 @interface BibleListViewController ()
@@ -23,10 +23,9 @@ NSArray *bibleList[5];
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    BibleViewController *bibleController = (BibleViewController *)segue.destinationViewController;
+    BibleMainViewController *bibleMainController = (BibleMainViewController *)segue.destinationViewController;
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    bibleController.bibleIndex = (indexPath.row % 13) - 1;
-    bibleController.bibleChapter = indexPath.row / 13; // self.bibleChapter;
+    bibleMainController.initalIndex = (indexPath.row / 13)*12 + ((indexPath.row % 13) - 1);
 }
 
 - (void) loadBibleListData:(NSInteger)index

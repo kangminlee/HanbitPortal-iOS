@@ -10,7 +10,10 @@
 
 @interface BibleViewController : UIViewController
 
-@property NSInteger bibleChapter;
-@property NSInteger bibleIndex;
+@property NSUInteger pageIndex;
+@property NSString *koreanTitle;
+@property NSString *koreanText;
+@property NSString *englishTitle;
+@property NSString *englishText;
 
 @end

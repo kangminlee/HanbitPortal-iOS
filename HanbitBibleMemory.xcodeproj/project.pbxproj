@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E1179C6018AF4F5A0065C5F0 /* BibleMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1179C5F18AF4F5A0065C5F0 /* BibleMainViewController.m */; };
 		E16F808D189CB9C900F92E6F /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E16F808B189CB9C900F92E6F /* AppIcon.png */; };
 		E16F808E189CB9C900F92E6F /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E16F808C189CB9C900F92E6F /* AppIcon@2x.png */; };
 		E185CAB71897643400BD98D0 /* BibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E185CAB61897643400BD98D0 /* BibleViewController.m */; };
@@ -59,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E1179C5E18AF4F5A0065C5F0 /* BibleMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleMainViewController.h; sourceTree = "<group>"; };
+		E1179C5F18AF4F5A0065C5F0 /* BibleMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleMainViewController.m; sourceTree = "<group>"; };
 		E16F808B189CB9C900F92E6F /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
 		E16F808C189CB9C900F92E6F /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
 		E185CAB51897643400BD98D0 /* BibleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleViewController.h; sourceTree = "<group>"; };
@@ -172,6 +175,8 @@
 				E18D2EB218962F550035ED8E /* AppDelegate.m */,
 				E18D2EB418962F550035ED8E /* Images.xcassets */,
 				E18D2ED1189630BF0035ED8E /* Main.storyboard */,
+				E1179C5E18AF4F5A0065C5F0 /* BibleMainViewController.h */,
+				E1179C5F18AF4F5A0065C5F0 /* BibleMainViewController.m */,
 				E188660918997E1D00BFB948 /* BibleContextsTable.h */,
 				E188660A18997E1D00BFB948 /* BibleContextsTable.m */,
 				E1C32DCF189803CF0054A9AC /* BibleListViewController.h */,
@@ -374,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E18D2EB318962F550035ED8E /* AppDelegate.m in Sources */,
+				E1179C6018AF4F5A0065C5F0 /* BibleMainViewController.m in Sources */,
 				E18D2ED9189639F20035ED8E /* SlideMenuViewController.m in Sources */,
 				E1DBCFD1189F5C5E006CEA0A /* BibleTestViewController.m in Sources */,
 				E18D2EAF18962F550035ED8E /* main.m in Sources */,

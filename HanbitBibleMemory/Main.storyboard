@@ -198,7 +198,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Ghs-YH-20h" kind="push" id="sAo-Wk-w9E"/>
+                                    <segue destination="Y03-2v-gR6" kind="push" id="g1G-sQ-gg8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -218,99 +218,95 @@
             </objects>
             <point key="canvasLocation" x="1161" y="-364"/>
         </scene>
-        <!--Bible View Controller - BibleView-->
-        <scene sceneID="zY8-kE-gIB">
+        <!--Bible Main View Controller-->
+        <scene sceneID="VVb-JI-t7a">
             <objects>
-                <viewController title="BibleView" id="Ghs-YH-20h" customClass="BibleViewController" sceneMemberID="viewController">
+                <viewController id="Y03-2v-gR6" customClass="BibleMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hph-nD-c6b"/>
-                        <viewControllerLayoutGuide type="bottom" id="JoV-02-A2q"/>
+                        <viewControllerLayoutGuide type="top" id="rJW-oW-cWI"/>
+                        <viewControllerLayoutGuide type="bottom" id="OfL-wY-6UP"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1wK-Fw-3LL">
+                    <view key="view" contentMode="scaleToFill" id="bGI-Um-GUd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yvg-s8-rDF">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="lxV-d4-22v">
+                            <connections>
+                                <action selector="bibleRecitation:" destination="Y03-2v-gR6" id="KuL-5p-Aqy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XwS-rP-Z0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1612" y="-364"/>
+        </scene>
+        <!--Bible View Controller-->
+        <scene sceneID="tj9-mF-ZLS">
+            <objects>
+                <viewController storyboardIdentifier="BibleViewController" id="xp4-dZ-GPX" customClass="BibleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZC5-yJ-XZ0"/>
+                        <viewControllerLayoutGuide type="bottom" id="Q97-Ll-ypH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YMq-OY-hik">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="bezel" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="XIV-Ii-7c4">
-                                <rect key="frame" x="20" y="77" width="280" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Korean Title" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Er4-Fn-tuM">
+                                <rect key="frame" x="20" y="72" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <attributedString key="attributedText"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="bezel" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="vA3-Jy-WSC">
-                                <rect key="frame" x="20" y="279" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <attributedString key="attributedText"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="smc-bW-qBl">
-                                <rect key="frame" x="20" y="115" width="280" height="140"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="test bible verse">
-                                        <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbN-3N-L10">
-                                <rect key="frame" x="20" y="317" width="280" height="140"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="test bible verse">
-                                        <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jfr-Gm-Ftx">
-                                <rect key="frame" x="20" y="500" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="button_previous.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pp7-d9-mkk">
-                                <rect key="frame" x="252" y="500" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="button_next.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBq-Xf-6QO">
-                                <rect key="frame" x="136" y="500" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" image="button_refresh.png">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="English Title" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WDp-r6-YBs">
+                                <rect key="frame" x="20" y="278" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Korean Text" translatesAutoresizingMaskIntoConstraints="NO" id="Mmr-i6-YhK">
+                                <rect key="frame" x="20" y="110" width="280" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="English Text" translatesAutoresizingMaskIntoConstraints="NO" id="hUc-wo-kg2">
+                                <rect key="frame" x="20" y="316" width="280" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="FGY-Uu-5q8"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="bibleEnglish" destination="bbN-3N-L10" id="XVl-ZW-fk8"/>
-                        <outlet property="bibleEnglishTitle" destination="vA3-Jy-WSC" id="GAM-p5-wwP"/>
-                        <outlet property="bibleKorean" destination="smc-bW-qBl" id="bxQ-To-G9X"/>
-                        <outlet property="bibleKoreanTitle" destination="XIV-Ii-7c4" id="pMQ-r5-hTv"/>
-                        <outlet property="bibleLeft" destination="Jfr-Gm-Ftx" id="k0M-13-9cj"/>
-                        <outlet property="bibleRecitation" destination="BBq-Xf-6QO" id="vpI-zK-yTd"/>
-                        <outlet property="bibleRight" destination="Pp7-d9-mkk" id="VGF-TI-qLG"/>
+                        <outlet property="bibleEnglishText" destination="hUc-wo-kg2" id="5N8-HS-9re"/>
+                        <outlet property="bibleEnglishTitle" destination="WDp-r6-YBs" id="rdh-p6-ToL"/>
+                        <outlet property="bibleKoreanText" destination="Mmr-i6-YhK" id="3KA-qa-o5e"/>
+                        <outlet property="bibleKoreanTitle" destination="Er4-Fn-tuM" id="TMt-e8-Kkd"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6T8-A5-AYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZKC-uF-GL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1669" y="-364"/>
+            <point key="canvasLocation" x="2061" y="4"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="rSw-8a-gBe">
+            <objects>
+                <pageViewController storyboardIdentifier="BiblePageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="aRb-8X-Fo9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gcC-Pf-dKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2061" y="-704"/>
         </scene>
         <!--Main View Controller - MainView-->
         <scene sceneID="RCR-qy-yVQ">
@@ -417,9 +413,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="button_next.png" width="128" height="128"/>
-        <image name="button_previous.png" width="128" height="128"/>
-        <image name="button_refresh.png" width="128" height="128"/>
         <image name="hanbit_bible.png" width="670" height="374"/>
         <image name="hanbit_logo.png" width="306" height="124"/>
         <image name="menu.png" width="28" height="20"/>
