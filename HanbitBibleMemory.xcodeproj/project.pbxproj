@@ -47,6 +47,13 @@
 		E1ED7371189E445A00012B00 /* button_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = E1ED736E189E445A00012B00 /* button_refresh.png */; };
 		E1ED7373189E463000012B00 /* rectangle_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = E1ED7372189E463000012B00 /* rectangle_blue.png */; };
 		E1ED7375189E471500012B00 /* rectangle_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E1ED7374189E471500012B00 /* rectangle_icon.png */; };
+		E1F5BEF318B1EB7A00F1256A /* bird.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1F5BEEE18B1EB7A00F1256A /* bird.jpg */; };
+		E1F5BEF418B1EB7A00F1256A /* brightsky.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1F5BEEF18B1EB7A00F1256A /* brightsky.jpg */; };
+		E1F5BEF518B1EB7A00F1256A /* cross.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1F5BEF018B1EB7A00F1256A /* cross.jpg */; };
+		E1F5BEF618B1EB7A00F1256A /* getty.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1F5BEF118B1EB7A00F1256A /* getty.jpg */; };
+		E1F5BEF718B1EB7A00F1256A /* yellowtree2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1F5BEF218B1EB7A00F1256A /* yellowtree2.jpg */; };
+		E1F5BEF918B1EFAD00F1256A /* email-open.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F5BEF818B1EFAD00F1256A /* email-open.png */; };
+		E1F5BEFC18B1F15300F1256A /* BibleYearTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5BEFB18B1F15300F1256A /* BibleYearTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +119,14 @@
 		E1ED736E189E445A00012B00 /* button_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_refresh.png; sourceTree = "<group>"; };
 		E1ED7372189E463000012B00 /* rectangle_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rectangle_blue.png; sourceTree = "<group>"; };
 		E1ED7374189E471500012B00 /* rectangle_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rectangle_icon.png; sourceTree = "<group>"; };
+		E1F5BEEE18B1EB7A00F1256A /* bird.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bird.jpg; sourceTree = "<group>"; };
+		E1F5BEEF18B1EB7A00F1256A /* brightsky.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brightsky.jpg; sourceTree = "<group>"; };
+		E1F5BEF018B1EB7A00F1256A /* cross.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cross.jpg; sourceTree = "<group>"; };
+		E1F5BEF118B1EB7A00F1256A /* getty.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = getty.jpg; sourceTree = "<group>"; };
+		E1F5BEF218B1EB7A00F1256A /* yellowtree2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yellowtree2.jpg; sourceTree = "<group>"; };
+		E1F5BEF818B1EFAD00F1256A /* email-open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email-open.png"; sourceTree = "<group>"; };
+		E1F5BEFA18B1F15300F1256A /* BibleYearTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleYearTableViewController.h; sourceTree = "<group>"; };
+		E1F5BEFB18B1F15300F1256A /* BibleYearTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleYearTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +190,8 @@
 				E18D2EB218962F550035ED8E /* AppDelegate.m */,
 				E18D2EB418962F550035ED8E /* Images.xcassets */,
 				E18D2ED1189630BF0035ED8E /* Main.storyboard */,
+				E1F5BEFA18B1F15300F1256A /* BibleYearTableViewController.h */,
+				E1F5BEFB18B1F15300F1256A /* BibleYearTableViewController.m */,
 				E1179C5E18AF4F5A0065C5F0 /* BibleMainViewController.h */,
 				E1179C5F18AF4F5A0065C5F0 /* BibleMainViewController.m */,
 				E188660918997E1D00BFB948 /* BibleContextsTable.h */,
@@ -242,9 +259,14 @@
 				E191594C189D7E84001CEFF4 /* arrow-left.png */,
 				E191594D189D7E84001CEFF4 /* arrow-right.png */,
 				E19BD68118AB7A3A00FCEDEE /* bible-icon.png */,
+				E1F5BEEE18B1EB7A00F1256A /* bird.jpg */,
+				E1F5BEEF18B1EB7A00F1256A /* brightsky.jpg */,
 				E1ED736C189E445A00012B00 /* button_next.png */,
 				E1ED736D189E445A00012B00 /* button_previous.png */,
 				E1ED736E189E445A00012B00 /* button_refresh.png */,
+				E1F5BEF818B1EFAD00F1256A /* email-open.png */,
+				E1F5BEF018B1EB7A00F1256A /* cross.jpg */,
+				E1F5BEF118B1EB7A00F1256A /* getty.jpg */,
 				E18B2A76189A501500072215 /* main.jpg */,
 				E18B2A74189A4EE100072215 /* hanbit_bible.png */,
 				E1ED7372189E463000012B00 /* rectangle_blue.png */,
@@ -256,6 +278,7 @@
 				E19BD68318AB7A9400FCEDEE /* table-icon.png */,
 				E19BD68518AB7ACC00FCEDEE /* test-paper-icon.png */,
 				E1ECE428189D60E10002E620 /* whiteButton.png */,
+				E1F5BEF218B1EB7A00F1256A /* yellowtree2.jpg */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -338,8 +361,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1F5BEF518B1EB7A00F1256A /* cross.jpg in Resources */,
 				E1ED7375189E471500012B00 /* rectangle_icon.png in Resources */,
 				E16F808D189CB9C900F92E6F /* AppIcon.png in Resources */,
+				E1F5BEF618B1EB7A00F1256A /* getty.jpg in Resources */,
+				E1F5BEF318B1EB7A00F1256A /* bird.jpg in Resources */,
+				E1F5BEF418B1EB7A00F1256A /* brightsky.jpg in Resources */,
 				E18D2EE01896402D0035ED8E /* menu.png in Resources */,
 				E16F808E189CB9C900F92E6F /* AppIcon@2x.png in Resources */,
 				E18D2ED2189630BF0035ED8E /* Main.storyboard in Resources */,
@@ -348,6 +375,7 @@
 				E18D2EE11896402D0035ED8E /* menu@2x.png in Resources */,
 				E18D2EAD18962F550035ED8E /* InfoPlist.strings in Resources */,
 				E19BD68618AB7ACC00FCEDEE /* test-paper-icon.png in Resources */,
+				E1F5BEF918B1EFAD00F1256A /* email-open.png in Resources */,
 				E19BD68418AB7A9400FCEDEE /* table-icon.png in Resources */,
 				E19BD68218AB7A3A00FCEDEE /* bible-icon.png in Resources */,
 				E1ED7371189E445A00012B00 /* button_refresh.png in Resources */,
@@ -356,6 +384,7 @@
 				E1ED7373189E463000012B00 /* rectangle_blue.png in Resources */,
 				E18B2A73189A49BE00072215 /* skyyel2.jpg in Resources */,
 				E18B2A75189A4EE100072215 /* hanbit_bible.png in Resources */,
+				E1F5BEF718B1EB7A00F1256A /* yellowtree2.jpg in Resources */,
 				E18D2EB518962F550035ED8E /* Images.xcassets in Resources */,
 				E191594E189D7E84001CEFF4 /* arrow-left.png in Resources */,
 				E1ED7370189E445A00012B00 /* button_previous.png in Resources */,
@@ -382,6 +411,7 @@
 				E1179C6018AF4F5A0065C5F0 /* BibleMainViewController.m in Sources */,
 				E18D2ED9189639F20035ED8E /* SlideMenuViewController.m in Sources */,
 				E1DBCFD1189F5C5E006CEA0A /* BibleTestViewController.m in Sources */,
+				E1F5BEFC18B1F15300F1256A /* BibleYearTableViewController.m in Sources */,
 				E18D2EAF18962F550035ED8E /* main.m in Sources */,
 				E185CAB71897643400BD98D0 /* BibleViewController.m in Sources */,
 				E18D2EDC18963B6E0035ED8E /* MainViewController.m in Sources */,

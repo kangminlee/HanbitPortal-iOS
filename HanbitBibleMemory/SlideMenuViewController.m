@@ -33,14 +33,15 @@
 {
     [super viewDidLoad];
 
-    //self.view.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
-    //self.tableView.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
-    //self.tableView.separatorColor = [UIColor colorWithWhite:0.15f alpha:0.2f];
+    self.view.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
+    self.tableView.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
+    self.tableView.separatorColor = [UIColor colorWithWhite:0.15f alpha:0.2f];
     
     self.menuItems = @[@"Hanbit Church",
                        @"성경 암송 60 구절",
                        @"성경 암송 모의 시험",
-                       @"성경 읽기표"];
+                       @"성경 읽기표",
+                       @"의견 주세요!"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -91,6 +92,11 @@
         case 3:
             CellIdentifier = @"bibleTable";
             imageName = @"table-icon.png";
+            break;
+            
+        case 4:
+            CellIdentifier = @"feedback";
+            imageName = @"email-open.png";
             break;
             
         default:

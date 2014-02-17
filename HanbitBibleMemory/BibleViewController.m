@@ -20,6 +20,8 @@
 
 @implementation BibleViewController
 
+NSString *backImageList[5] = {@"bird.jpg", @"yellowtree2.jpg", @"cross.jpg", @"getty.jpg", @"brightsky.jpg"};
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,7 +37,7 @@
 
     // background
     UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"skyyel2.jpg"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:backImageList[self.pageIndex % 5]] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     

@@ -85,6 +85,9 @@ NSInteger thisTimeHour;
     _sidebarButton.target = self.revealViewController;
     _sidebarButton.action = @selector(revealToggle:);
 
+    // Set the gesture
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
     // background
     UIGraphicsBeginImageContext(self.view.frame.size);
     [[UIImage imageNamed:@"main.jpg"] drawInRect:self.view.bounds];
@@ -110,8 +113,6 @@ NSInteger thisTimeHour;
     else
         self.mainBible.text = korTextString[thisWeekCh][thisWeekVerse];
     
-    // Set the gesture
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning

@@ -48,6 +48,17 @@ NSInteger bibleIndex;
     // Set the side bar button action. When it's tapped, it'll show up the sidebar.
     _sidebarButton.target = self.revealViewController;
     _sidebarButton.action = @selector(revealToggle:);
+ 
+    // Set the gesture
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+
+    // background
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"skyyel2.jpg"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
     
     // initialize
     bibleHintMode = 0;
