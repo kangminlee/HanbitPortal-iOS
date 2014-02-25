@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		E1179C6018AF4F5A0065C5F0 /* BibleMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1179C5F18AF4F5A0065C5F0 /* BibleMainViewController.m */; };
-		E16F808D189CB9C900F92E6F /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E16F808B189CB9C900F92E6F /* AppIcon.png */; };
-		E16F808E189CB9C900F92E6F /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E16F808C189CB9C900F92E6F /* AppIcon@2x.png */; };
+		E13AC89918BA6CA300005ED3 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E13AC89818BA6CA300005ED3 /* MessageViewController.m */; };
+		E13AC89D18BA908400005ED3 /* AppIcon_58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = E13AC89A18BA908400005ED3 /* AppIcon_58x58.png */; };
+		E13AC89E18BA908400005ED3 /* AppIcon_80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = E13AC89B18BA908400005ED3 /* AppIcon_80x80.png */; };
+		E13AC89F18BA908400005ED3 /* AppIcon_120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = E13AC89C18BA908400005ED3 /* AppIcon_120x120.png */; };
 		E185CAB71897643400BD98D0 /* BibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E185CAB61897643400BD98D0 /* BibleViewController.m */; };
 		E188660B18997E1D00BFB948 /* BibleContextsTable.m in Sources */ = {isa = PBXBuildFile; fileRef = E188660A18997E1D00BFB948 /* BibleContextsTable.m */; };
 		E18B2A71189A48A100072215 /* hanbit_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E18B2A70189A48A100072215 /* hanbit_logo.png */; };
@@ -69,8 +71,11 @@
 /* Begin PBXFileReference section */
 		E1179C5E18AF4F5A0065C5F0 /* BibleMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleMainViewController.h; sourceTree = "<group>"; };
 		E1179C5F18AF4F5A0065C5F0 /* BibleMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleMainViewController.m; sourceTree = "<group>"; };
-		E16F808B189CB9C900F92E6F /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
-		E16F808C189CB9C900F92E6F /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
+		E13AC89718BA6CA300005ED3 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		E13AC89818BA6CA300005ED3 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		E13AC89A18BA908400005ED3 /* AppIcon_58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon_58x58.png; path = "../../../HanbitPortal-iOS/HanbitBibleMemory/AppIcon_58x58.png"; sourceTree = "<group>"; };
+		E13AC89B18BA908400005ED3 /* AppIcon_80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon_80x80.png; path = "../../../HanbitPortal-iOS/HanbitBibleMemory/AppIcon_80x80.png"; sourceTree = "<group>"; };
+		E13AC89C18BA908400005ED3 /* AppIcon_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon_120x120.png; path = "../../../HanbitPortal-iOS/HanbitBibleMemory/AppIcon_120x120.png"; sourceTree = "<group>"; };
 		E185CAB51897643400BD98D0 /* BibleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleViewController.h; sourceTree = "<group>"; };
 		E185CAB61897643400BD98D0 /* BibleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleViewController.m; sourceTree = "<group>"; };
 		E188660918997E1D00BFB948 /* BibleContextsTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleContextsTable.h; sourceTree = "<group>"; };
@@ -204,6 +209,8 @@
 				E185CAB61897643400BD98D0 /* BibleViewController.m */,
 				E18D2EDA18963B6E0035ED8E /* MainViewController.h */,
 				E18D2EDB18963B6E0035ED8E /* MainViewController.m */,
+				E13AC89718BA6CA300005ED3 /* MessageViewController.h */,
+				E13AC89818BA6CA300005ED3 /* MessageViewController.m */,
 				E18D2ED7189639F20035ED8E /* SlideMenuViewController.h */,
 				E18D2ED8189639F20035ED8E /* SlideMenuViewController.m */,
 				E18D2ED3189631A80035ED8E /* Library */,
@@ -254,8 +261,9 @@
 		E18D2EDD189640040035ED8E /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				E16F808B189CB9C900F92E6F /* AppIcon.png */,
-				E16F808C189CB9C900F92E6F /* AppIcon@2x.png */,
+				E13AC89A18BA908400005ED3 /* AppIcon_58x58.png */,
+				E13AC89B18BA908400005ED3 /* AppIcon_80x80.png */,
+				E13AC89C18BA908400005ED3 /* AppIcon_120x120.png */,
 				E191594C189D7E84001CEFF4 /* arrow-left.png */,
 				E191594D189D7E84001CEFF4 /* arrow-right.png */,
 				E19BD68118AB7A3A00FCEDEE /* bible-icon.png */,
@@ -363,12 +371,12 @@
 			files = (
 				E1F5BEF518B1EB7A00F1256A /* cross.jpg in Resources */,
 				E1ED7375189E471500012B00 /* rectangle_icon.png in Resources */,
-				E16F808D189CB9C900F92E6F /* AppIcon.png in Resources */,
 				E1F5BEF618B1EB7A00F1256A /* getty.jpg in Resources */,
+				E13AC89D18BA908400005ED3 /* AppIcon_58x58.png in Resources */,
+				E13AC89E18BA908400005ED3 /* AppIcon_80x80.png in Resources */,
 				E1F5BEF318B1EB7A00F1256A /* bird.jpg in Resources */,
 				E1F5BEF418B1EB7A00F1256A /* brightsky.jpg in Resources */,
 				E18D2EE01896402D0035ED8E /* menu.png in Resources */,
-				E16F808E189CB9C900F92E6F /* AppIcon@2x.png in Resources */,
 				E18D2ED2189630BF0035ED8E /* Main.storyboard in Resources */,
 				E1ED736F189E445A00012B00 /* button_next.png in Resources */,
 				E191594F189D7E84001CEFF4 /* arrow-right.png in Resources */,
@@ -378,6 +386,7 @@
 				E1F5BEF918B1EFAD00F1256A /* email-open.png in Resources */,
 				E19BD68418AB7A9400FCEDEE /* table-icon.png in Resources */,
 				E19BD68218AB7A3A00FCEDEE /* bible-icon.png in Resources */,
+				E13AC89F18BA908400005ED3 /* AppIcon_120x120.png in Resources */,
 				E1ED7371189E445A00012B00 /* button_refresh.png in Resources */,
 				E18B2A77189A501500072215 /* main.jpg in Resources */,
 				E18B2A71189A48A100072215 /* hanbit_logo.png in Resources */,
@@ -409,6 +418,7 @@
 			files = (
 				E18D2EB318962F550035ED8E /* AppDelegate.m in Sources */,
 				E1179C6018AF4F5A0065C5F0 /* BibleMainViewController.m in Sources */,
+				E13AC89918BA6CA300005ED3 /* MessageViewController.m in Sources */,
 				E18D2ED9189639F20035ED8E /* SlideMenuViewController.m in Sources */,
 				E1DBCFD1189F5C5E006CEA0A /* BibleTestViewController.m in Sources */,
 				E1F5BEFC18B1F15300F1256A /* BibleYearTableViewController.m in Sources */,
@@ -526,6 +536,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -536,11 +547,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HANBIT CHURCH (RZ898GV328)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HanbitBibleMemory/HanbitBibleMemory-Prefix.pch";
 				INFOPLIST_FILE = "HanbitBibleMemory/HanbitBibleMemory-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "CA99B770-D048-483E-A473-1459DF741B97";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -550,11 +562,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HANBIT CHURCH (RZ898GV328)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HanbitBibleMemory/HanbitBibleMemory-Prefix.pch";
 				INFOPLIST_FILE = "HanbitBibleMemory/HanbitBibleMemory-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "CA99B770-D048-483E-A473-1459DF741B97";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -40,7 +40,7 @@
     self.menuItems = @[@"Hanbit Church",
                        @"성경 암송 60 구절",
                        @"성경 암송 모의 시험",
-                       @"성경 읽기표",
+                       //@"성경 읽기표",
                        @"의견 주세요!"];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -89,12 +89,12 @@
             imageName = @"test-paper-icon.png";
             break;
             
-        case 3:
+        case 4:
             CellIdentifier = @"bibleTable";
             imageName = @"table-icon.png";
             break;
             
-        case 4:
+        case 3:
             CellIdentifier = @"feedback";
             imageName = @"email-open.png";
             break;
@@ -135,6 +135,10 @@
     if( indexPath.row > 0 && [segue.identifier isEqualToString:@"showBible"] ) {
         BibleListViewController *bibleListController = (BibleListViewController*)segue.destinationViewController;
         bibleListController.bibleChapter = indexPath.row - 1;
+    }
+    
+    if( [segue.identifier isEqualToString:@"sendFeedback"] )
+    {
     }
     
     if( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
