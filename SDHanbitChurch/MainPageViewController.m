@@ -8,8 +8,13 @@
 
 #import "MainPageViewController.h"
 #import "SWRevealViewController.h"
+#import "HanbitManager.h"
+#import "HanbitCommunicator.h"
 
-@interface MainPageViewController ()
+@interface MainPageViewController () <HanbitManagerDelegate> {
+    NSArray *_groups;
+    HanbitManager *_manager;
+}
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 - (IBAction)mainButton1:(id)sender;
@@ -43,6 +48,17 @@
 
     self.title = @"샌디에고 한빛교회";
     
+    _manager = [[HanbitManager alloc] init];
+    _manager.communicator = [[HanbitCommunicator alloc] init];
+    _manager.communicator.delegate = _manager;
+    _manager.delegate = self;
+  
+    [_manager fetchGroupsAtHanbit:30];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(startFetchingGroups:)
+//                                                 name:@"HanbitDataReceived"
+//                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,6 +67,29 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)mainButton1:(id)sender {
+- (IBAction)mainButton1:(id)sender
+{
 }
+
+#pragma mark - Notification Observer
+- (void)startFetchingGroups:(NSInteger)category //(NSNotification *)notification
+{
+    [_manager fetchGroupsAtHanbit:category];
+}
+
+#pragma mark - MeetupManagerDelegate
+- (void)didReceiveGroups:(NSArray *)groups
+{
+    _groups = groups;
+
+    NSLog(@"finally got the info from the delegate\n");
+    // update Badge information at Main View
+    //[self.tableView reloadData];
+}
+
+- (void)fetchingGroupsFailedWithError:(NSError *)error
+{
+    NSLog(@"Error %@; %@", error, [error localizedDescription]);
+}
+
 @end
