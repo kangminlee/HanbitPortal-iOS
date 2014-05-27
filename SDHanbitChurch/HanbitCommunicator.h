@@ -14,6 +14,6 @@
 
 @property (weak, nonatomic) id<HanbitCommunicatorDelegate> delegate;
 
-- (void)searchItemsAtHanbit:(NSInteger)category;
+- (void)searchItemsAtHanbit:(NSInteger)category After:(NSString *)date;
 
 @end

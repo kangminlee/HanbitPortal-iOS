@@ -13,10 +13,10 @@
 
 @implementation HanbitCommunicator
 
-- (void)searchItemsAtHanbit:(NSInteger)category
+- (void)searchItemsAtHanbit:(NSInteger)category After:(NSString *)date
 {
-    NSString *urlAsString = [NSString stringWithFormat:@"http://www.sdhanbit.org/wordpress/wp_api/v1/posts?cat=%ld&include_found=yes&per_page=%d",
-                             (long)category, PAGE_COUNT];
+    NSString *urlAsString = [NSString stringWithFormat:@"http://www.sdhanbit.org/wordpress/wp_api/v1/posts?cat=%ld&include_found=yes&per_page=%d&after=%@",
+                             (long)category, PAGE_COUNT, date];
     NSURL *url = [[NSURL alloc] initWithString:urlAsString];
     NSLog(@"%@", urlAsString);
     

@@ -12,9 +12,9 @@
 
 @implementation HanbitManager
 
-- (void)fetchGroupsAtHanbit:(NSInteger)category
+- (void)fetchGroupsAtHanbit:(NSInteger)category After:(NSString *)date
 {
-    [self.communicator searchItemsAtHanbit:category];
+    [self.communicator searchItemsAtHanbit:category After:date];
 }
 
 #pragma mark - HanbitCommunicatorDelegate

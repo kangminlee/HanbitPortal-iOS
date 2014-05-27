@@ -18,6 +18,6 @@
 @property (strong, nonatomic) HanbitCommunicator *communicator;
 @property (weak, nonatomic) id<HanbitManagerDelegate> delegate;
 
-- (void)fetchGroupsAtHanbit:(NSInteger)category;
+- (void)fetchGroupsAtHanbit:(NSInteger)category After:(NSString *)date;
 
 @end

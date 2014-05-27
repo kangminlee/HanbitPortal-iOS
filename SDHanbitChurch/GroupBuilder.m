@@ -23,27 +23,43 @@
     
     NSMutableArray *groups = [[NSMutableArray alloc] init];
     
-    long found = [parsedObject valueForKey:@"found"];
-    NSLog(@"Found %ld", found);
+    NSInteger found = [[parsedObject valueForKey:@"found"] intValue];
+    NSLog(@"Found %d", found);
     
     NSArray *results = [parsedObject valueForKey:@"posts"];
     NSLog(@"Count %d", results.count);
     
-    for (NSDictionary *groupDic in results)
+    for( NSDictionary *groupDic in results )
     {
-/* -- replace SQL codes here ----
-        Group *group = [[Group alloc] init];
-        
-        for (NSString *key in groupDic)
+        for( NSString *key in groupDic )
         {
+            NSString *value = [groupDic valueForKey:key];
+            
+            if( [key isEqual: @"title"])
+                NSLog(@"%@: %@", key, value);
+            
+            if( [key isEqual: @"date"])
+                NSLog(@"%@: %@", key, value);
+            
+            //if( [key isEqual: @"content"])
+            //    NSLog(@"%@: %@", key, value);
+            
+            if( [key isEqual: @"taxonomies"])
+            {
+                NSDictionary *category = [[groupDic valueForKey:key] valueForKey:@"category"];
+                for( NSString *subkey in category )
+                {
+                    NSLog(@"%@:category: %@", key, subkey);
+                }
+            }
+            
+            /* -- replace SQL codes here ----
             if ([group respondsToSelector:NSSelectorFromString(key)])
             {
                 [group setValue:[groupDic valueForKey:key] forKey:key];
             }
+             */
         }
-        
-        [groups addObject:group];
- */
     }
     
     return groups;

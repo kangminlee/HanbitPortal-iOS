@@ -10,10 +10,13 @@
 #import "SWRevealViewController.h"
 #import "HanbitManager.h"
 #import "HanbitCommunicator.h"
+#import "DBManager.h"
 
 @interface MainPageViewController () <HanbitManagerDelegate> {
     NSArray *_groups;
     HanbitManager *_manager;
+    
+    NSString *lastUpdateDate;
 }
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
@@ -47,13 +50,49 @@
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 
     self.title = @"샌디에고 한빛교회";
-    
+  
     _manager = [[HanbitManager alloc] init];
     _manager.communicator = [[HanbitCommunicator alloc] init];
     _manager.communicator.delegate = _manager;
     _manager.delegate = self;
   
-    [_manager fetchGroupsAtHanbit:30];
+    // get the current date and time info
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyyMMddHHmm"];
+    
+    NSDate *now = [[NSDate alloc] init];
+    NSString *dateString = [format stringFromDate:now];
+    
+    // read the database to get the latest updated date
+    if (lastUpdateDate == nil)
+    {
+        [DBManager prepareDatabase];
+        lastUpdateDate = [DBManager getLatestUpdateDate];
+        
+        if (lastUpdateDate == nil)
+            lastUpdateDate = @"201403010000";
+    }
+    
+    // access the web server when last update is more than 12 hours ago
+    long long dateStringInt = [dateString longLongValue];
+    long long lastUpdateInt = [lastUpdateDate longLongValue];
+    if (dateStringInt - lastUpdateInt > 1200)
+    {
+        // 목회칼럼
+        [_manager fetchGroupsAtHanbit:14 After:lastUpdateDate];
+    
+        // 교회소식 (광고)
+        [_manager fetchGroupsAtHanbit:15 After:lastUpdateDate];
+
+        // 설교동영상
+        [_manager fetchGroupsAtHanbit:30 After:lastUpdateDate];
+        
+        // 설교나눔
+        [_manager fetchGroupsAtHanbit:61 After:lastUpdateDate];
+
+        // 말씀의 씨앗
+        [_manager fetchGroupsAtHanbit:87 After:lastUpdateDate];
+    }
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self
 //                                             selector:@selector(startFetchingGroups:)
@@ -69,12 +108,13 @@
 
 - (IBAction)mainButton1:(id)sender
 {
+    
 }
 
 #pragma mark - Notification Observer
-- (void)startFetchingGroups:(NSInteger)category //(NSNotification *)notification
+- (void)startFetchingGroups:(NSInteger)category From:(NSString *)date //(NSNotification *)notification
 {
-    [_manager fetchGroupsAtHanbit:category];
+    [_manager fetchGroupsAtHanbit:category After:date];
 }
 
 #pragma mark - MeetupManagerDelegate
