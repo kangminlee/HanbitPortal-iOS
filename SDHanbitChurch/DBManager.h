@@ -22,6 +22,7 @@
 + (BOOL) prepareDatabase;
 + (BOOL) addItemsToDatabase:(NSInteger)identifier Category:(NSInteger)cat UpdateDate:(NSString*)updatedate Title:(NSString *)title PubDate:(NSString *)pubdate permLink:(NSString *)link Content:(NSString *)content;
 + (NSArray*) findItemsByCategory:(NSInteger)category;
-+ (NSString*) getLatestUpdateDate;
++ (NSString*) getLatestUpdateDate:(NSInteger)category;
++ (BOOL) updateLatestUpdateDate:(NSInteger)category NewUpdateDate:(NSString *)newUpdateDate;
 
 @end

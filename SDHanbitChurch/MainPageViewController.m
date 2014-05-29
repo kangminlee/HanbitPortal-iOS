@@ -15,8 +15,6 @@
 @interface MainPageViewController () <HanbitManagerDelegate> {
     NSArray *_groups;
     HanbitManager *_manager;
-    
-    NSString *lastUpdateDate;
 }
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
@@ -62,36 +60,26 @@
     
     NSDate *now = [[NSDate alloc] init];
     NSString *dateString = [format stringFromDate:now];
+    long long dateStringInt = [dateString longLongValue];
     
-    // read the database to get the latest updated date
-    if (lastUpdateDate == nil)
+    // read the database to get the latest updated date for each category
+    [DBManager prepareDatabase];
+
+    // 목회칼럼 (14), 교회소식/광고 (15), 설교동영상 (30), 설교나눔 (61), 말씀의 씨앗 (87)
+    NSInteger tableCategory[5] = {14, 15, 30, 61, 87};
+    for (int i=0; i<5; i++)
     {
-        [DBManager prepareDatabase];
-        lastUpdateDate = [DBManager getLatestUpdateDate];
+        NSInteger category = tableCategory[i];
         
+        NSString *lastUpdateDate = [DBManager getLatestUpdateDate:category];
         if (lastUpdateDate == nil)
             lastUpdateDate = @"201403010000";
-    }
     
-    // access the web server when last update is more than 12 hours ago
-    long long dateStringInt = [dateString longLongValue];
-    long long lastUpdateInt = [lastUpdateDate longLongValue];
-    if (dateStringInt - lastUpdateInt > 1200)
-    {
-        // 목회칼럼
-        [_manager fetchGroupsAtHanbit:14 After:lastUpdateDate];
-    
-        // 교회소식 (광고)
-        [_manager fetchGroupsAtHanbit:15 After:lastUpdateDate];
-
-        // 설교동영상
-        [_manager fetchGroupsAtHanbit:30 After:lastUpdateDate];
+        long long lastUpdateInt = [lastUpdateDate longLongValue];
         
-        // 설교나눔
-        [_manager fetchGroupsAtHanbit:61 After:lastUpdateDate];
-
-        // 말씀의 씨앗
-        [_manager fetchGroupsAtHanbit:87 After:lastUpdateDate];
+        // access the web server when last update is more than 12 hours ago
+        if (dateStringInt - lastUpdateInt > 1200)
+            [_manager fetchGroupsAtHanbit:category After:lastUpdateDate];
     }
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self
