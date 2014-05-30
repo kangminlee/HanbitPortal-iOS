@@ -39,11 +39,11 @@
     
     if (results.count == 0) // TBD, should be updated one by one.. but how??
     {
-        [DBManager updateLatestUpdateDate:14 NewUpdateDate:dateString];
-        [DBManager updateLatestUpdateDate:15 NewUpdateDate:dateString];
-        [DBManager updateLatestUpdateDate:30 NewUpdateDate:dateString];
-        [DBManager updateLatestUpdateDate:61 NewUpdateDate:dateString];
-        [DBManager updateLatestUpdateDate:87 NewUpdateDate:dateString];
+//        [DBManager updateLatestUpdateDate:14 NewUpdateDate:dateString];
+//        [DBManager updateLatestUpdateDate:15 NewUpdateDate:dateString];
+//        [DBManager updateLatestUpdateDate:30 NewUpdateDate:dateString];
+//        [DBManager updateLatestUpdateDate:61 NewUpdateDate:dateString];
+//        [DBManager updateLatestUpdateDate:87 NewUpdateDate:dateString];
     }
     
     for( NSDictionary *groupDic in results )

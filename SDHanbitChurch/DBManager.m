@@ -66,19 +66,26 @@ sqlite3 *myDatabase;
     
     if (sqlite3_open(dbpath, &myDatabase) == SQLITE_OK)
     {
-        NSString *insertSQL = [NSString stringWithFormat:
-                               @"INSERT INTO SDHANBITCONTENTS VALUES (%d, %d, '%@', '%@', '%@', '%@', '%@')",
-                               identifier, cat, updatedate, title, pubdate, link, content];
-        //NSLog(@"%@",insertSQL);
-        const char *insert_stmt = [insertSQL UTF8String];
+        char *insert_stmt = sqlite3_mprintf("INSERT INTO SDHANBITCONTENTS VALUES(%d, %d, '%q', '%q', '%q', '%q', '%q')",
+                                            identifier, cat, [updatedate UTF8String], [title UTF8String],
+                                            [pubdate UTF8String], [link UTF8String], [content UTF8String]);
+        //NSLog(@"%s",insert_stmt);
+      
+        //NSString *insertSQL = [NSString stringWithFormat:
+        //                       @"INSERT INTO SDHANBITCONTENTS VALUES (%d, %d, '%@', '%@', '%@', '%@', '%@')",
+        //                       identifier, cat, updatedate, title, pubdate, link, content];
+        //const char *insert_stmt = [insertSQL UTF8String];
+
         sqlite3_prepare_v2(myDatabase, insert_stmt,  -1, &statement, NULL);
         if (sqlite3_step(statement) == SQLITE_DONE)
             isSuccess = YES;
         else
             NSLog(@"error in (%d/%d): %s", identifier, cat, sqlite3_errmsg(myDatabase));
         
+        sqlite3_free(insert_stmt);
         sqlite3_finalize(statement);
         sqlite3_close(myDatabase);
+        
     }
     
     return isSuccess;
@@ -123,14 +130,72 @@ sqlite3 *myDatabase;
     return nil;
 }
 
-+ (NSString*) getLatestUpdateDate:(NSInteger)category
++ (BOOL) deleteItemsBeforePubDate:(NSString *)pubDate
+{
+    BOOL isSuccess = NO;
+    const char *dbpath = [databasePath UTF8String];
+    
+    if (sqlite3_open(dbpath, &myDatabase) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:
+                              @"DELETE FROM SDHANBITCONTENTS WHERE PUBDATE<%@", pubDate];
+        const char *query_stmt = [querySQL UTF8String];
+        sqlite3_stmt *statement = nil;
+        
+        if (sqlite3_prepare_v2(myDatabase, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(statement) == SQLITE_DONE)
+                isSuccess = YES;
+            else
+                NSLog(@"error to delete items: %s", sqlite3_errmsg(myDatabase));
+        }
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(myDatabase);
+        
+    }
+    
+    return isSuccess;
+}
+
++ (NSInteger) numberOfItemsAtCategory:(NSInteger)category
+{
+    NSInteger numItems = 0;
+    const char *dbpath = [databasePath UTF8String];
+    
+    if (sqlite3_open(dbpath, &myDatabase) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:
+                              @"SELECT COUNT(ID) FROM SDHANBITCONTENTS WHERE CAT=%d", category];
+        const char *query_stmt = [querySQL UTF8String];
+        sqlite3_stmt *statement = nil;
+        
+        if (sqlite3_prepare_v2(myDatabase, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                char *value = (char *)sqlite3_column_text(statement, 0);
+                numItems = atoi(value);
+            }
+            else
+                NSLog(@"error to get the number of items: %s", sqlite3_errmsg(myDatabase));
+        }
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(myDatabase);
+    }
+    
+    return numItems;
+}
+
++ (NSString*) getLatestRequestDate:(NSInteger)category
 {
     const char *dbpath = [databasePath UTF8String];
     
     if (sqlite3_open(dbpath, &myDatabase) == SQLITE_OK)
     {
         NSString *querySQL = [NSString stringWithFormat:
-                    @"SELECT MAX(UPDATEDATE) FROM SDHANBITCONTENTS WHERE CAT=%d", category];
+                    @"SELECT MAX(UPDATEDATE) FROM SDHANBITCONTENTS WHERE ID=%d", category];
         const char *query_stmt = [querySQL UTF8String];
         sqlite3_stmt *statement = nil;
         NSString *latestUpdateDate = nil;
@@ -139,8 +204,9 @@ sqlite3 *myDatabase;
         {
             if (sqlite3_step(statement) == SQLITE_ROW)
             {
-                latestUpdateDate = [[NSString alloc] initWithUTF8String:
-                                    (const char *) sqlite3_column_text(statement, 0)];
+                char *value = (char *)sqlite3_column_text(statement, 0);
+                if (value)
+                    latestUpdateDate = [[NSString alloc] initWithUTF8String:value];
             }
             else
                 NSLog(@"error to get latestUpdateDate: %s", sqlite3_errmsg(myDatabase));
@@ -155,7 +221,40 @@ sqlite3 *myDatabase;
     return nil;
 }
 
-+ (BOOL) updateLatestUpdateDate:(NSInteger)category NewUpdateDate:(NSString *)newUpdateDate
++ (NSString*) getLatestPubDate:(NSInteger)category
+{
+    const char *dbpath = [databasePath UTF8String];
+    
+    if (sqlite3_open(dbpath, &myDatabase) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:
+                              @"SELECT MAX(PUBDATE) FROM SDHANBITCONTENTS WHERE CAT=%d", category];
+        const char *query_stmt = [querySQL UTF8String];
+        sqlite3_stmt *statement = nil;
+        NSString *latestPubDate = nil;
+        
+        if (sqlite3_prepare_v2(myDatabase, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                char *value = (char *)sqlite3_column_text(statement, 0);
+                if (value)
+                    latestPubDate = [[NSString alloc] initWithUTF8String:value];
+            }
+            else
+                NSLog(@"error to get latestUpdateDate: %s", sqlite3_errmsg(myDatabase));
+        }
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(myDatabase);
+        
+        return latestPubDate;
+    }
+    
+    return nil;
+}
+
++ (BOOL) updateLatestRequestDate:(NSInteger)category NewRequestDate:(NSString *)newRequestDate
 {
     BOOL isSuccess = NO;
     const char *dbpath = [databasePath UTF8String];
@@ -163,7 +262,7 @@ sqlite3 *myDatabase;
     if (sqlite3_open(dbpath, &myDatabase) == SQLITE_OK)
     {
         NSString *querySQL = [NSString stringWithFormat:
-                              @"UPDATE SDHANBITCONTENTS SET UPDATEDATE='%@' WHERE CAT=%d", newUpdateDate, category];
+                              @"UPDATE SDHANBITCONTENTS SET UPDATEDATE='%@' WHERE ID=%d", newRequestDate, category];
         const char *query_stmt = [querySQL UTF8String];
         sqlite3_stmt *statement = nil;
         
@@ -172,7 +271,7 @@ sqlite3 *myDatabase;
             if (sqlite3_step(statement) == SQLITE_DONE)
                 isSuccess = YES;
             else
-                NSLog(@"error to get latestUpdateDate: %s", sqlite3_errmsg(myDatabase));
+                NSLog(@"error to get latestRequestDate: %s", sqlite3_errmsg(myDatabase));
         }
         
         sqlite3_finalize(statement);
