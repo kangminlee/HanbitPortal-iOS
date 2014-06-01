@@ -22,7 +22,9 @@
 + (BOOL) prepareDatabase;
 + (BOOL) addItemsToDatabase:(NSInteger)identifier Category:(NSInteger)cat UpdateDate:(NSString*)updatedate Title:(NSString *)title PubDate:(NSString *)pubdate permLink:(NSString *)link Content:(NSString *)content;
 + (NSArray*) findItemsByCategory:(NSInteger)category;
++ (NSInteger) numberOfTotalItems;
 + (NSInteger) numberOfItemsAtCategory:(NSInteger)category;
++ (BOOL) deleteAllItems;
 + (BOOL) deleteItemsBeforePubDate:(NSString *)pubDate;
 + (NSString*) getLatestRequestDate:(NSInteger)category;
 + (NSString*) getLatestPubDate:(NSInteger)category;

@@ -64,9 +64,10 @@
     
     // read the database to get the latest updated date for each category
     [DBManager prepareDatabase];
-    [DBManager deleteItemsBeforePubDate:@"201405301200"];
+    //[DBManager deleteAllItems];
     
-    NSLog( @"[database] cat14:%d, cat15:%d, cat30:%d, cat61:%d, cat87:%d",
+    NSLog( @"[database] total:%d, cat14:%d, cat15:%d, cat30:%d, cat61:%d, cat87:%d",
+          [DBManager numberOfTotalItems],
           [DBManager numberOfItemsAtCategory:14],
           [DBManager numberOfItemsAtCategory:15],
           [DBManager numberOfItemsAtCategory:30],
@@ -85,14 +86,14 @@
             latestRequestDate = @"201401010000";
             
             [DBManager addItemsToDatabase:category
-                                 Category:0
+                                 Category:9999
                                UpdateDate:latestRequestDate
                                     Title:@"N/A" PubDate:@"N/A" permLink:@"N/A" Content:@"NA"];
         }
-        
-        long long latestRequestInt = [latestRequestDate longLongValue];
+        NSLog(@"cat:%d, latestRequestDate:%@", category, latestRequestDate);
         
         // access the web server when last update is more than 12 hours ago
+        long long latestRequestInt = [latestRequestDate longLongValue];
         if (dateStringInt - latestRequestInt > 1200)
         {
             [DBManager updateLatestRequestDate:category NewRequestDate:dateString];

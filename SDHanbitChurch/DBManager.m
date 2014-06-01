@@ -76,17 +76,23 @@ sqlite3 *myDatabase;
         //                       identifier, cat, updatedate, title, pubdate, link, content];
         //const char *insert_stmt = [insertSQL UTF8String];
 
-        sqlite3_prepare_v2(myDatabase, insert_stmt,  -1, &statement, NULL);
-        if (sqlite3_step(statement) == SQLITE_DONE)
-            isSuccess = YES;
-        else
-            NSLog(@"error in (%d/%d): %s", identifier, cat, sqlite3_errmsg(myDatabase));
+        if ((sqlite3_prepare_v2(myDatabase, insert_stmt,  -1, &statement, NULL) == SQLITE_OK))
+        {
+            if (sqlite3_step(statement) == SQLITE_DONE)
+            {
+                isSuccess = YES;
+                //NSLog(@"[%d/%d] added successfully", identifier, cat);
+            }
+            else
+                NSLog(@"add error in (%d/%d): %s", identifier, cat, sqlite3_errmsg(myDatabase));
+        }
         
-        sqlite3_free(insert_stmt);
         sqlite3_finalize(statement);
         sqlite3_close(myDatabase);
-        
+        sqlite3_free(insert_stmt);
     }
+    else
+        NSLog(@"open error in (%d/%d): %s", identifier, cat, sqlite3_errmsg(myDatabase));
     
     return isSuccess;
 }
@@ -130,6 +136,34 @@ sqlite3 *myDatabase;
     return nil;
 }
 
++ (BOOL) deleteAllItems
+{
+    BOOL isSuccess = NO;
+    const char *dbpath = [databasePath UTF8String];
+    
+    if (sqlite3_open(dbpath, &myDatabase) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:
+                              @"DELETE FROM SDHANBITCONTENTS"];
+        const char *query_stmt = [querySQL UTF8String];
+        sqlite3_stmt *statement = nil;
+        
+        if (sqlite3_prepare_v2(myDatabase, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(statement) == SQLITE_DONE)
+                isSuccess = YES;
+            else
+                NSLog(@"error to delete all items: %s", sqlite3_errmsg(myDatabase));
+        }
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(myDatabase);
+        
+    }
+    
+    return isSuccess;
+}
+
 + (BOOL) deleteItemsBeforePubDate:(NSString *)pubDate
 {
     BOOL isSuccess = NO;
@@ -156,6 +190,36 @@ sqlite3 *myDatabase;
     }
     
     return isSuccess;
+}
+
++ (NSInteger) numberOfTotalItems
+{
+    NSInteger numItems = 0;
+    const char *dbpath = [databasePath UTF8String];
+    
+    if (sqlite3_open(dbpath, &myDatabase) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:
+                              @"SELECT COUNT(ID) FROM SDHANBITCONTENTS"];
+        const char *query_stmt = [querySQL UTF8String];
+        sqlite3_stmt *statement = nil;
+        
+        if (sqlite3_prepare_v2(myDatabase, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                char *value = (char *)sqlite3_column_text(statement, 0);
+                numItems = atoi(value);
+            }
+            else
+                NSLog(@"error to get the total number: %s", sqlite3_errmsg(myDatabase));
+        }
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(myDatabase);
+    }
+    
+    return numItems;
 }
 
 + (NSInteger) numberOfItemsAtCategory:(NSInteger)category

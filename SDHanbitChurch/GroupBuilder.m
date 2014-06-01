@@ -66,7 +66,12 @@
                 title = value;
             
             if( [key isEqual: @"date"])
-                date = value;
+            {
+                date = [[value componentsSeparatedByCharactersInSet:
+                         [[NSCharacterSet decimalDigitCharacterSet]invertedSet]]
+                        componentsJoinedByString:@""];
+                date = [date substringToIndex:12]; // yyyyMMddHHmm
+            }
             
             if( [key isEqual: @"permalink"])
                 permalink = value;
