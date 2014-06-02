@@ -36,7 +36,7 @@ sqlite3 *myDatabase;
     
     // Build the path to the database file. We declared databasePath on Step 7
     databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent:@"sdhanbit.db"]];
-    NSLog(@"DB Path: %@", databasePath);
+    //NSLog(@"DB Path: %@", databasePath);
     
     NSFileManager *filemgr = [NSFileManager defaultManager];
     if ([filemgr fileExistsAtPath: databasePath] == NO)
@@ -97,7 +97,7 @@ sqlite3 *myDatabase;
     return isSuccess;
 }
 
-+ (NSArray*) findItemsByCategory:(NSInteger)category
++ (NSArray*) findListOfItemsAtCategory:(NSInteger)category
 {
     const char *dbpath = [databasePath UTF8String];
     
@@ -105,7 +105,7 @@ sqlite3 *myDatabase;
     {
         NSString *querySQL = [NSString stringWithFormat:
                               @"SELECT TITLE, PUBDATE, CONTENT FROM SDHANBITCONTENTS WHERE CAT=%d", category];
-        NSLog(@"SQLite>%@", querySQL);
+        //NSLog(@"SQLite>%@", querySQL);
         
         const char *query_stmt = [querySQL UTF8String];
         sqlite3_stmt *statement = nil;
@@ -126,6 +126,48 @@ sqlite3 *myDatabase;
                 [resultArray addObject:info];
             }
         }
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(myDatabase);
+        
+        return resultArray;
+    }
+    
+    return nil;
+}
+
++ (NSArray*) getItemDetailInfo:(NSInteger)category Index:(NSInteger)index
+{
+    const char *dbpath = [databasePath UTF8String];
+    
+    if (sqlite3_open(dbpath, &myDatabase) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:
+                              @"SELECT TITLE, PUBDATE, CONTENT FROM SDHANBITCONTENTS WHERE CAT=%d ORDER BY PUBDATE DESC LIMIT 1 OFFSET %d",
+                              category, index];
+        //NSLog(@"SQLite>%@", querySQL);
+        
+        const char *query_stmt = [querySQL UTF8String];
+        sqlite3_stmt *statement = nil;
+        NSMutableArray *resultArray = [[NSMutableArray alloc] init];
+        
+        if (sqlite3_prepare_v2(myDatabase, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            while (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                NSString *title = [[NSString alloc] initWithUTF8String:
+                                   (const char *) sqlite3_column_text(statement, 0)];
+                NSString *pubdate = [[NSString alloc] initWithUTF8String:
+                                     (const char *) sqlite3_column_text(statement, 1)];
+                NSString *content = [[NSString alloc]initWithUTF8String:
+                                     (const char *) sqlite3_column_text(statement, 2)];
+                
+                DBManager *info = [[DBManager alloc] initWithContents:index title:title pubdate:pubdate content:content];
+                [resultArray addObject:info];
+            }
+        }
+        else
+            NSLog(@"error to get item info (%d/%d):%s", category, index, sqlite3_errmsg(myDatabase) );
         
         sqlite3_finalize(statement);
         sqlite3_close(myDatabase);

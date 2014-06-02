@@ -8,6 +8,7 @@
 
 #import "SlideMenuViewController.h"
 #import "SWRevealViewController.h"
+#import "PageTableViewController.h"
 
 @interface SlideMenuViewController ()
 
@@ -23,6 +24,13 @@ NSInteger slideMenuIndex[19] = {0, 1, 2, 2, 2,
                                 2, 1, 2, 3, 3,
                                 3, 1, 3, 3, 3,
                                 1, 3, 2, 2};
+
+// dynamic information: 목회칼럼 (14), 교회소식/광고 (15), 설교동영상 (30), 설교나눔 (61), 말씀의 씨앗 (87)
+// static  information: 교회소개 (201), 성경암송 (202), 소망의 씨앗 (203), 금주사역 (204)
+NSInteger slideMenuCategory[19] = {  0,   0,   0,   0,   0,
+                                     0,   0,   0,  30,  61,
+                                   202,   0,  14,  87, 203,
+                                     0,  15, 204,   0};
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -138,17 +146,15 @@ NSInteger slideMenuIndex[19] = {0, 1, 2, 2, 2,
     UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
     destViewController.title = [[self.menuItems objectAtIndex:indexPath.row] capitalizedString];
     
-    // Set the bible if it navigates to the BibleView
-    //if( indexPath.row > 0 && [segue.identifier isEqualToString:@"showBible"] ) {
-    //    BibleListViewController *bibleListController = (BibleListViewController*)segue.destinationViewController;
-    //    bibleListController.bibleChapter = indexPath.row - 1;
-    //}
+    // Set the category if it navigates the menu
+    if( indexPath.row > 0 && [segue.identifier isEqualToString:@"showTableView"] )
+    {
+        PageTableViewController *tableViewController = (PageTableViewController*)segue.destinationViewController;
+        tableViewController.category = slideMenuCategory[indexPath.row];
+    }
     
-    //if( [segue.identifier isEqualToString:@"sendFeedback"] )
-    //{
-    //}
-    
-    if( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
+    if( [segue isKindOfClass: [SWRevealViewControllerSegue class]] )
+    {
         SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;
         
         swSegue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc) {

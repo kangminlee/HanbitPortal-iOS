@@ -8,6 +8,7 @@
 
 #import "MainPageViewController.h"
 #import "SWRevealViewController.h"
+#import "PageTableViewController.h"
 #import "HanbitManager.h"
 #import "HanbitCommunicator.h"
 #import "DBManager.h"
@@ -18,11 +19,25 @@
 }
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
-- (IBAction)mainButton1:(id)sender;
+- (IBAction)mainButton01:(id)sender;
+- (IBAction)mainButton02:(id)sender;
+- (IBAction)mainButton03:(id)sender;
+- (IBAction)mainButton04:(id)sender;
+- (IBAction)mainButton05:(id)sender;
+- (IBAction)mainButton06:(id)sender;
+- (IBAction)mainButton07:(id)sender;
+- (IBAction)mainButton08:(id)sender;
+- (IBAction)mainButton09:(id)sender;
 
 @end
 
 @implementation MainPageViewController
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    PageTableViewController *pageTableController = (PageTableViewController *)segue.destinationViewController;
+    pageTableController.category = _selectedCategory;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,7 +68,7 @@
     _manager.communicator = [[HanbitCommunicator alloc] init];
     _manager.communicator.delegate = _manager;
     _manager.delegate = self;
-  
+    
     // get the current date and time info
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"yyyyMMddHHmm"];
@@ -115,9 +130,51 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)mainButton1:(id)sender
+// 목회칼럼 (14), 교회소식/광고 (15), 설교동영상 (30), 설교나눔 (61), 말씀의 씨앗 (87)
+// 교회소개 (201), 성경암송 (202), 소망의 씨앗 (203), 금주사역 (204)
+- (IBAction)mainButton01:(id)sender
 {
-    
+    _selectedCategory = 201;
+}
+
+- (IBAction)mainButton02:(id)sender
+{
+    _selectedCategory = 30;
+}
+
+- (IBAction)mainButton03:(id)sender
+{
+    _selectedCategory = 61;
+}
+
+- (IBAction)mainButton04:(id)sender
+{
+    _selectedCategory = 14;
+}
+
+- (IBAction)mainButton05:(id)sender
+{
+    _selectedCategory = 87;
+}
+
+- (IBAction)mainButton06:(id)sender
+{
+    _selectedCategory = 202;
+}
+
+- (IBAction)mainButton07:(id)sender
+{
+    _selectedCategory = 15;
+}
+
+- (IBAction)mainButton08:(id)sender
+{
+    _selectedCategory = 203;
+}
+
+- (IBAction)mainButton09:(id)sender
+{
+    _selectedCategory = 204;
 }
 
 #pragma mark - Notification Observer

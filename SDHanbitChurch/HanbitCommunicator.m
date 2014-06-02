@@ -15,7 +15,8 @@
 
 - (void)searchItemsAtHanbit:(NSInteger)category After:(NSString *)date
 {
-    NSString *urlAsString = [NSString stringWithFormat:@"http://www.sdhanbit.org/wordpress/wp_api/v1/posts?cat=%ld&include_found=yes&per_page=%d&after=%@",
+    NSString *urlAsString = [NSString stringWithFormat:
+                             @"http://www.sdhanbit.org/wordpress/wp_api/v1/posts?cat=%ld&include_found=yes&per_page=%d&after=%@",
                              (long)category, PAGE_COUNT, date];
     NSURL *url = [[NSURL alloc] initWithString:urlAsString];
     NSLog(@"%@", urlAsString);
@@ -24,7 +25,7 @@
                                        queue:[[NSOperationQueue alloc] init]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
     {
-        if( error )
+        if (error)
         {
             [self.delegate fetchingItemsFailedWithError:error];
         } else

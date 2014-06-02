@@ -10,6 +10,7 @@
 #import <sqlite3.h>
 
 @interface DBManager : NSObject {
+@public
     NSInteger _category;
     NSString *_title;
     NSString *_pubdate;
@@ -21,7 +22,8 @@
 
 + (BOOL) prepareDatabase;
 + (BOOL) addItemsToDatabase:(NSInteger)identifier Category:(NSInteger)cat UpdateDate:(NSString*)updatedate Title:(NSString *)title PubDate:(NSString *)pubdate permLink:(NSString *)link Content:(NSString *)content;
-+ (NSArray*) findItemsByCategory:(NSInteger)category;
++ (NSArray*) findListOfItemsAtCategory:(NSInteger)category;
++ (NSArray*) getItemDetailInfo:(NSInteger)category Index:(NSInteger)index;
 + (NSInteger) numberOfTotalItems;
 + (NSInteger) numberOfItemsAtCategory:(NSInteger)category;
 + (BOOL) deleteAllItems;

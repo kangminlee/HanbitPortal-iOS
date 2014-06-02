@@ -10,4 +10,6 @@
 
 @interface MainPageViewController : UIViewController
 
+@property NSInteger selectedCategory;
+
 @end

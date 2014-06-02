@@ -8,6 +8,8 @@
 
 #import "PageTableViewController.h"
 #import "SWRevealViewController.h"
+#import "ItemViewController.h"
+#import "DBManager.h"
 
 @interface PageTableViewController ()
 
@@ -16,6 +18,13 @@
 @end
 
 @implementation PageTableViewController
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    ItemViewController *itemViewController = (ItemViewController *)segue.destinationViewController;
+    itemViewController.category = _category;
+    itemViewController.index    = [self.tableView indexPathForSelectedRow].row;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -59,21 +68,65 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 1;
+    return [DBManager numberOfItemsAtCategory:_category];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"cell";
+    static NSString *CellIdentifier = nil;
+    
+    // dynamic information: 목회칼럼 (14), 교회소식/광고 (15), 설교동영상 (30), 설교나눔 (61), 말씀의 씨앗 (87)
+    // static  information: 교회소개 (201), 성경암송 (202), 소망의 씨앗 (203), 금주사역 (204)
+   switch (_category)
+    {
+        case 14:
+            CellIdentifier = @"columnCell";
+            break;
+        case 15:
+            CellIdentifier = @"newsCell";
+            break;
+        case 30:
+            CellIdentifier = @"sermonCell";
+            break;
+        case 61:
+            CellIdentifier = @"shareCell";
+            break;
+        case 87:
+            CellIdentifier = @"noteCell";
+            break;
+        case 202:
+            CellIdentifier = @"bibleCell";
+            break;
+        default:
+            NSLog(@"undefinded category");
+            break;
+    }
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    NSArray *listOfItems = [DBManager getItemDetailInfo:_category Index:indexPath.row];
+    
+    if (cell == nil || listOfItems == nil)
+        return cell;
+    
+    DBManager *data = [listOfItems objectAtIndex:0];
+    
+    UILabel *tableLabelTitle = (UILabel *)[cell viewWithTag:100];
+    tableLabelTitle.text = data->_title;
+
+    NSRange strYearRange = {0,4}, strMonthRange = {4,2}, strDayRange = {6,2};
+    UILabel *tableLabelDate = (UILabel *)[cell viewWithTag:101];
+    tableLabelDate.text = [NSString stringWithFormat:@"%@-%@-%@",
+                           [data->_pubdate substringWithRange:strYearRange],
+                           [data->_pubdate substringWithRange:strMonthRange],
+                           [data->_pubdate substringWithRange:strDayRange]];
     
     return cell;
 }
