@@ -39,6 +39,7 @@
         NSString *htmlString = [NSString stringWithFormat:
                                 @"<p><font size=\"4\" style=\"color:#8258FA\">%@</font></p>%@<br>",
                                 data->_title, data->_content];
+        htmlString = [htmlString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
         [_viewItem loadHTMLString:htmlString baseURL:nil];
     }
 }

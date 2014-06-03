@@ -54,7 +54,42 @@
     
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    
+ 
+    NSString *titleString;
+    switch (_category)
+    {
+        case 14:
+            titleString = @"목회 칼럼";
+            break;
+        case 15:
+            titleString = @"교회 소식";
+            break;
+        case 30:
+            titleString = @"설교 동영상";
+            break;
+        case 61:
+            titleString = @"설교 나눔";
+            break;
+        case 87:
+            titleString = @"말씀의 씨앗";
+            break;
+        case 201:
+            titleString = @"교회 소개";
+            break;
+        case 202:
+            titleString = @"성경 암송";
+            break;
+        case 203:
+            titleString = @"소망의 씨앗";
+            break;
+        case 204:
+            titleString = @"금주 사역";
+            break;
+        default:
+            NSLog(@"undefinded category");
+            break;
+    }
+    self.title = titleString;
 }
 
 - (void)didReceiveMemoryWarning
