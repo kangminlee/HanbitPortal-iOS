@@ -32,10 +32,10 @@
     NSMutableArray *groups = [[NSMutableArray alloc] init];
     
     NSInteger found = [[parsedObject valueForKey:@"found"] intValue];
-    NSLog(@"Found %d", found);
+    NSLog(@"Found %ld", (long)found);
     
     NSArray *results = [parsedObject valueForKey:@"posts"];
-    NSLog(@"Count %d", results.count);
+    NSLog(@"Count %lu", (unsigned long)results.count);
     
     if (results.count == 0) // TBD, should be updated one by one.. but how??
     {

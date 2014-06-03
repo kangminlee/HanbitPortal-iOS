@@ -81,13 +81,13 @@
     [DBManager prepareDatabase];
     //[DBManager deleteAllItems];
     
-    NSLog( @"[database] total:%d, cat14:%d, cat15:%d, cat30:%d, cat61:%d, cat87:%d",
-          [DBManager numberOfTotalItems],
-          [DBManager numberOfItemsAtCategory:14],
-          [DBManager numberOfItemsAtCategory:15],
-          [DBManager numberOfItemsAtCategory:30],
-          [DBManager numberOfItemsAtCategory:61],
-          [DBManager numberOfItemsAtCategory:87]);
+    NSLog( @"[database] total:%ld, cat14:%ld, cat15:%ld, cat30:%ld, cat61:%ld, cat87:%ld",
+          (long)[DBManager numberOfTotalItems],
+          (long)[DBManager numberOfItemsAtCategory:14],
+          (long)[DBManager numberOfItemsAtCategory:15],
+          (long)[DBManager numberOfItemsAtCategory:30],
+          (long)[DBManager numberOfItemsAtCategory:61],
+          (long)[DBManager numberOfItemsAtCategory:87]);
 
     // 목회칼럼 (14), 교회소식/광고 (15), 설교동영상 (30), 설교나눔 (61), 말씀의 씨앗 (87)
     NSInteger tableCategory[5] = {14, 15, 30, 61, 87};
@@ -105,7 +105,7 @@
                                UpdateDate:latestRequestDate
                                     Title:@"N/A" PubDate:@"N/A" permLink:@"N/A" Content:@"NA"];
         }
-        NSLog(@"cat:%d, latestRequestDate:%@", category, latestRequestDate);
+        NSLog(@"cat:%ld, latestRequestDate:%@", (long)category, latestRequestDate);
         
         // access the web server when last update is more than 12 hours ago
         long long latestRequestInt = [latestRequestDate longLongValue];
@@ -114,6 +114,9 @@
             [DBManager updateLatestRequestDate:category NewRequestDate:dateString];
             
             NSString *latestPubDate = [DBManager getLatestPubDate:category];
+            if (latestPubDate == nil)
+                latestPubDate = @"201401010000";
+
             [_manager fetchGroupsAtHanbit:category After:latestPubDate];
         }
     }
