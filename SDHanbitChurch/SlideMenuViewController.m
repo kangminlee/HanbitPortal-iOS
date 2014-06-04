@@ -21,7 +21,7 @@
 @implementation SlideMenuViewController
 
 NSInteger slideMenuIndex[19] = {0, 1, 2, 2, 2,
-                                2, 1, 2, 3, 3,
+                                4, 1, 2, 3, 3,
                                 3, 1, 3, 3, 3,
                                 1, 3, 2, 2};
 
@@ -60,7 +60,7 @@ NSInteger slideMenuCategory[19] = {  0,   0,   0,   0,   0,
                        @"담임목사 소개",
                        @"섬기는 이들",
                        @"인사말",
-                       @"오시는 글",
+                       @"오시는 길",
                        @"예배",       // 6, sub title
                        @"예배 안내",
                        @"설교 동영상",
@@ -73,12 +73,13 @@ NSInteger slideMenuCategory[19] = {  0,   0,   0,   0,   0,
                        @"공지사항",    // 15, sub title
                        @"교회 소식",
                        @"금주 사역",
-                       @"문화학교",];
+                       @"문화 학교",];
     
     self.slideMenuIdentifier = @[@"title",
                                  @"inlineHandler",
                                  @"viewHandler",
-                                 @"tableHandler",];
+                                 @"tableHandler",
+                                 @"mapHandler"];
     
     self.slideMenuIcons = @[@"email-open.png", ];
 }
@@ -151,6 +152,10 @@ NSInteger slideMenuCategory[19] = {  0,   0,   0,   0,   0,
     {
         PageTableViewController *tableViewController = (PageTableViewController*)segue.destinationViewController;
         tableViewController.category = slideMenuCategory[indexPath.row];
+    }
+    else if( [segue.identifier isEqualToString:@"showMap"] )
+    {
+    
     }
     
     if( [segue isKindOfClass: [SWRevealViewControllerSegue class]] )
