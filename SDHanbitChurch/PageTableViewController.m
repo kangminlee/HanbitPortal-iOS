@@ -112,6 +112,14 @@
     return [DBManager numberOfItemsAtCategory:_category];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (_category == 30)
+        return 88;
+    else
+        return 48;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = nil;
@@ -163,7 +171,37 @@
                            [data->_pubdate substringWithRange:strMonthRange],
                            [data->_pubdate substringWithRange:strDayRange]];
     
+    if (_category == 30)
+    {
+        UIWebView *videoView = (UIWebView *)[cell viewWithTag:102];
+        NSString *youtubeId = [self extractYoutubeID:data->_content];
+        if (youtubeId != nil)
+        {
+            NSString *embedCode = [NSString stringWithFormat:@"<iframe width=\"144\" height=\"80\" src=\"http://www.youtube.com/embed/%@?modestbranding=1&autohide=1&showinfo=0&controls=0\" frameborder=\"0\" allowfullscreen></iframe>", youtubeId];
+            [videoView loadHTMLString:embedCode baseURL:nil];
+        }
+    }
+    
     return cell;
+}
+
+- (NSString *)extractYoutubeID:(NSString *)youtubeURL
+{
+    NSError *error = NULL;
+    NSString *regexString = @"(?<=v(=|/))([-a-zA-Z0-9_]+)|(?<=youtu.be/)([-a-zA-Z0-9_]+)";
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexString
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+    NSRange rangeOfFirstMatch = [regex rangeOfFirstMatchInString:youtubeURL
+                                                         options:0
+                                                           range:NSMakeRange(0, [youtubeURL length])];
+    if (!NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0)))
+    {
+        NSString *substringForFirstMatch = [youtubeURL substringWithRange:rangeOfFirstMatch];
+        return substringForFirstMatch;
+    }
+    
+    return nil;
 }
 
 /*
