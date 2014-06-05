@@ -9,6 +9,7 @@
 #import "MainPageViewController.h"
 #import "SWRevealViewController.h"
 #import "PageTableViewController.h"
+#import "PageViewController.h"
 #import "HanbitManager.h"
 #import "HanbitCommunicator.h"
 #import "DBManager.h"
@@ -28,6 +29,7 @@
 - (IBAction)mainButton07:(id)sender;
 - (IBAction)mainButton08:(id)sender;
 - (IBAction)mainButton09:(id)sender;
+- (IBAction)manualRequest:(id)sender;
 
 @end
 
@@ -35,8 +37,16 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    PageTableViewController *pageTableController = (PageTableViewController *)segue.destinationViewController;
-    pageTableController.category = _selectedCategory;
+    if (_selectedCategory == 201)
+    {
+        PageViewController *pageViewController = (PageViewController *)segue.destinationViewController;
+        pageViewController.category = _selectedCategory;
+    }
+    else
+    {
+        PageTableViewController *pageTableController = (PageTableViewController *)segue.destinationViewController;
+        pageTableController.category = _selectedCategory;
+    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -107,9 +117,9 @@
         }
         NSLog(@"cat:%ld, latestRequestDate:%@", (long)category, latestRequestDate);
         
-        // access the web server when last update is more than 12 hours ago
+        // access the web server when last update is more than an hour ago
         long long latestRequestInt = [latestRequestDate longLongValue];
-        if (dateStringInt - latestRequestInt > 1200)
+        if (dateStringInt - latestRequestInt > 100)
         {
             [DBManager updateLatestRequestDate:category NewRequestDate:dateString];
             
@@ -178,6 +188,22 @@
 - (IBAction)mainButton09:(id)sender
 {
     _selectedCategory = 204;
+}
+
+- (IBAction)manualRequest:(id)sender
+{
+    // 목회칼럼 (14), 교회소식/광고 (15), 설교동영상 (30), 설교나눔 (61), 말씀의 씨앗 (87)
+    NSInteger tableCategory[5] = {14, 15, 30, 61, 87};
+    for (int i=0; i<5; i++)
+    {
+        NSInteger category = tableCategory[i];
+    
+        NSString *latestPubDate = [DBManager getLatestPubDate:category];
+        if (latestPubDate == nil)
+            latestPubDate = @"201401010000";
+    
+        [_manager fetchGroupsAtHanbit:category After:latestPubDate];
+    }
 }
 
 #pragma mark - Notification Observer

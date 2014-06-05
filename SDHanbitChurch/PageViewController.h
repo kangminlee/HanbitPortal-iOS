@@ -10,4 +10,6 @@
 
 @interface PageViewController : UIViewController
 
+@property NSInteger category;
+
 @end

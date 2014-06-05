@@ -43,6 +43,15 @@
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     _mapControl.showsUserLocation = YES;
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(32.827608, -117.162542);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 30000, 30000);
+    [_mapControl setRegion:region animated:NO];
+    
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    annotation.coordinate = coordinate;
+    annotation.title = @"Hanbit Church";
+    [_mapControl addAnnotation:annotation];
 }
 
 - (void)didReceiveMemoryWarning

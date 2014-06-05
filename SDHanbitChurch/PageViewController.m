@@ -12,6 +12,7 @@
 @interface PageViewController ()
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+@property (weak, nonatomic) IBOutlet UIWebView *viewControl;
 
 @end
 
@@ -39,6 +40,19 @@
     
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
+    if (_category == 201)
+    {
+        NSURL *url = [NSURL URLWithString:@"http://www.sdhanbit.org/?page_id=323"];
+        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+        [_viewControl loadRequest:requestObj];
+    }
+    else if (_category == 304)
+    {
+        NSURL *url = [NSURL URLWithString:@"http://www.sdhanbit.org/?page_id=190"];
+        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+        [_viewControl loadRequest:requestObj];
+    }
 }
 
 - (void)didReceiveMemoryWarning

@@ -9,6 +9,7 @@
 #import "SlideMenuViewController.h"
 #import "SWRevealViewController.h"
 #import "PageTableViewController.h"
+#import "PageViewController.h"
 
 @interface SlideMenuViewController ()
 
@@ -27,8 +28,9 @@ NSInteger slideMenuIndex[19] = {0, 1, 2, 2, 2,
 
 // dynamic information: 목회칼럼 (14), 교회소식/광고 (15), 설교동영상 (30), 설교나눔 (61), 말씀의 씨앗 (87)
 // static  information: 교회소개 (201), 성경암송 (202), 소망의 씨앗 (203), 금주사역 (204)
-NSInteger slideMenuCategory[19] = {  0,   0,   0,   0,   0,
-                                     0,   0,   0,  30,  61,
+//                      담임목사 소개 (301), 섬기는 이들 (302), 인사말 (303), 예배 안내 (304)
+NSInteger slideMenuCategory[19] = {  0,   0, 301, 302, 303,
+                                     0,   0, 304,  30,  61,
                                    202,   0,  14,  87, 203,
                                      0,  15, 204,   0};
 
@@ -152,6 +154,11 @@ NSInteger slideMenuCategory[19] = {  0,   0,   0,   0,   0,
     {
         PageTableViewController *tableViewController = (PageTableViewController*)segue.destinationViewController;
         tableViewController.category = slideMenuCategory[indexPath.row];
+    }
+    else if( [segue.identifier isEqualToString:@"showView"] )
+    {
+        PageViewController *ViewController = (PageViewController*)segue.destinationViewController;
+        ViewController.category = slideMenuCategory[indexPath.row];
     }
     else if( [segue.identifier isEqualToString:@"showMap"] )
     {
